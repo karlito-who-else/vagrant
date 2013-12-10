@@ -7,10 +7,10 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                qjkyPDmDzL2f:
+                xBqw3OsD9REt:
                     host: ''
                     guest: ''
-                pjZK5USGVNNp:
+                KYNGgK9wuwZL:
                     host: ''
                     guest: ''
         provider:
@@ -29,7 +29,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            iorZP7EUEFkW:
+            gRWaNE5vlkEW:
                 id: vagrant-root
                 source: ~/src/sites
                 target: /var/www
@@ -67,7 +67,7 @@ apache:
         - rewrite
         - ssl
     vhosts:
-        LpGhsKXO5VCU:
+        fUkj1Q1DhA9v:
             servername: wednesdayagency.com.host
             serveraliases:
                 - www.wednesdayagency.com.host
@@ -77,7 +77,7 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-        ngNyUXq566be:
+        p614eG4keyfP:
             servername: saturday-group.com.host
             serveraliases:
                 - www.saturday-group.com.host
@@ -87,6 +87,14 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
+        CRpRB9IU9dH1:
+            servername: wednesday-sample.host
+            serveraliases:
+                - www.wednesday-sample.host
+            docroot: /var/www/wednesday-sample/build/public/
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
     user: www-data
     group: www-data
     default_vhost: true
@@ -153,7 +161,7 @@ mysql:
     root_password: wednesday
     phpmyadmin: '1'
     databases:
-        4cWAvhfAu9IY:
+        MUMEa2KpKJxs:
             grant:
                 - ALL
             name: saturday-group.com
@@ -161,7 +169,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        WC6L3mXbUM0s:
+        5iEvaynhpKNs:
             grant:
                 - ALL
             name: wednesdayagency.com
@@ -169,7 +177,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/wednesdayagency.com/sql/schema.sql
-        KrzP4YZDF4qD:
+        RTZJFBHkEhJb:
             grant:
                 - ALL
             name: erdem.com
@@ -177,4 +185,12 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/erdem.com/sql/schema.sql
+        9kbSeIcWQasl:
+            grant:
+                - ALL
+            name: wednesday-sample
+            host: localhost
+            user: wednesday
+            password: wednesday
+            sql_file: /var/www/wednesday-sample/sql/schema.sql
 
