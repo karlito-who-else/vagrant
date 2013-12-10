@@ -7,10 +7,10 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                9Po7fGlPzD2n:
+                qjkyPDmDzL2f:
                     host: ''
                     guest: ''
-                hnWiSRsQjD6B:
+                pjZK5USGVNNp:
                     host: ''
                     guest: ''
         provider:
@@ -29,9 +29,9 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            oJEjkgos8EPx:
+            iorZP7EUEFkW:
                 id: vagrant-root
-                source: ./
+                source: ~/src/sites
                 target: /var/www
                 nfs: 'false'
         usable_port_range: 2200..2250
@@ -56,18 +56,18 @@ server:
     _prevent_empty: ''
 apache:
     modules:
-        - php
-        - rewrite
         - dav
         - dav_fs
         - expires
         - headers
         - info
         - mime_magic
+        - php
         - proxy
+        - rewrite
         - ssl
     vhosts:
-        O0c9vj86VkWQ:
+        LpGhsKXO5VCU:
             servername: wednesdayagency.com.host
             serveraliases:
                 - www.wednesdayagency.com.host
@@ -77,7 +77,7 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-        olmAwhg7LmH2:
+        ngNyUXq566be:
             servername: saturday-group.com.host
             serveraliases:
                 - www.saturday-group.com.host
@@ -96,22 +96,21 @@ php:
     composer: '1'
     modules:
         php:
-            - cli
-            - intl
-            - mcrypt
             - cgi
+            - cli
+            - common
             - curl
             - gd
-            - imagick
             - geoip
+            - imagick
             - imap
-            - mbstring
+            - intl
+            - mcrypt
             - memcached
             - sqlite
             - tidy
             - xmlrpc
             - xsl
-            - common
         pear:
             - OpenID
             - Console_CommandLine
@@ -128,9 +127,9 @@ php:
             - Services_Twitter
             - Services_W3C_CSSValidator
             - Services_W3C_HTMLValidator
+            - Services_YouTube
             - SOAP
             - XML_RPC2
-            - Services_YouTube
         pecl:
             - pecl_http
     ini:
@@ -154,7 +153,7 @@ mysql:
     root_password: wednesday
     phpmyadmin: '1'
     databases:
-        yud7sPqTezMk:
+        4cWAvhfAu9IY:
             grant:
                 - ALL
             name: saturday-group.com
@@ -162,7 +161,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        s0eQgImmohBt:
+        WC6L3mXbUM0s:
             grant:
                 - ALL
             name: wednesdayagency.com
@@ -170,7 +169,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/wednesdayagency.com/sql/schema.sql
-        CUlWxOPalcSI:
+        KrzP4YZDF4qD:
             grant:
                 - ALL
             name: erdem.com

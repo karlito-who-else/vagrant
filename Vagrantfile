@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.56.101"
 
 
-  config.vm.synced_folder "./", "/var/www", id: "vagrant-root", :nfs => false
+  config.vm.synced_folder "~/src/sites", "/var/www", id: "vagrant-root", :nfs => false
 
   config.vm.usable_port_range = (2200..2250)
   config.vm.provider :virtualbox do |virtualbox|
