@@ -1,0 +1,181 @@
+---
+vagrantfile-local:
+    vm:
+        box: ubuntu-precise12042-x64-vbox43
+        box_url: 'http://box.puphpet.com/ubuntu-precise12042-x64-vbox43.box'
+        hostname: null
+        network:
+            private_network: 192.168.56.101
+            forwarded_port:
+                9Po7fGlPzD2n:
+                    host: ''
+                    guest: ''
+                hnWiSRsQjD6B:
+                    host: ''
+                    guest: ''
+        provider:
+            virtualbox:
+                modifyvm:
+                    name: wednesday
+                    natdnshostresolver1: on
+                    memory: '512'
+                setextradata:
+                    VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
+        provision:
+            puppet:
+                manifests_path: puppet/manifests
+                options:
+                    - --verbose
+                    - '--hiera_config /vagrant/hiera.yaml'
+                    - '--parser future'
+        synced_folder:
+            oJEjkgos8EPx:
+                id: vagrant-root
+                source: ./
+                target: /var/www
+                nfs: 'false'
+        usable_port_range: 2200..2250
+    ssh:
+        host: null
+        port: null
+        private_key_path: null
+        username: vagrant
+        guest_port: null
+        keep_alive: true
+        forward_agent: false
+        forward_x11: false
+        shell: 'bash -l'
+    vagrant:
+        host: ':detect'
+server:
+    packages:
+        - vim
+    dot_files:
+        -
+            bash_aliases: null
+    _prevent_empty: ''
+apache:
+    modules:
+        - php
+        - rewrite
+        - dav
+        - dav_fs
+        - expires
+        - headers
+        - info
+        - mime_magic
+        - proxy
+        - ssl
+    vhosts:
+        O0c9vj86VkWQ:
+            servername: wednesdayagency.com.host
+            serveraliases:
+                - www.wednesdayagency.com.host
+            docroot: /var/www/wednesdayagency.com/deploy/
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+        olmAwhg7LmH2:
+            servername: saturday-group.com.host
+            serveraliases:
+                - www.saturday-group.com.host
+            docroot: /var/www/saturday-group.com/deploy/
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+    user: www-data
+    group: www-data
+    default_vhost: true
+    mpm_module: prefork
+php:
+    version: '55'
+    composer: '1'
+    modules:
+        php:
+            - cli
+            - intl
+            - mcrypt
+            - cgi
+            - curl
+            - gd
+            - imagick
+            - geoip
+            - imap
+            - mbstring
+            - memcached
+            - sqlite
+            - tidy
+            - xmlrpc
+            - xsl
+            - common
+        pear:
+            - OpenID
+            - Console_CommandLine
+            - Event_SignalEmitter
+            - File_Sitemap
+            - HTTP_OAuth
+            - VersionControl_Git
+            - Services_Amazon_S3
+            - Services_Amazon_SQS
+            - Services_Facebook
+            - Services_Google
+            - Services_oEmbed
+            - Services_OpenSearch
+            - Services_Twitter
+            - Services_W3C_CSSValidator
+            - Services_W3C_HTMLValidator
+            - SOAP
+            - XML_RPC2
+            - Services_YouTube
+        pecl:
+            - pecl_http
+    ini:
+        display_errors: On
+        error_reporting: '-1'
+        session.save_path: /var/lib/php/session
+    timezone: Europe/London
+xdebug:
+    install: '1'
+    settings:
+        xdebug.default_enable: '1'
+        xdebug.remote_autostart: '0'
+        xdebug.remote_connect_back: '1'
+        xdebug.remote_enable: '1'
+        xdebug.remote_handler: dbgp
+        xdebug.remote_port: '9000'
+xhprof:
+    install: '1'
+    location: /var/www/xhprof
+mysql:
+    root_password: wednesday
+    phpmyadmin: '1'
+    databases:
+        yud7sPqTezMk:
+            grant:
+                - ALL
+            name: saturday-group.com
+            host: localhost
+            user: wednesday
+            password: wednesday
+            sql_file: /var/www/saturday-group.com/sql/schema.sql
+        s0eQgImmohBt:
+            grant:
+                - ALL
+            name: wednesdayagency.com
+            host: localhost
+            user: wednesday
+            password: wednesday
+            sql_file: /var/www/wednesdayagency.com/sql/schema.sql
+        CUlWxOPalcSI:
+            grant:
+                - ALL
+            name: erdem.com
+            host: localhost
+            user: wednesday
+            password: wednesday
+            sql_file: /var/www/erdem.com/sql/schema.sql
+
