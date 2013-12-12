@@ -7,10 +7,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                xBqw3OsD9REt:
-                    host: ''
-                    guest: ''
-                KYNGgK9wuwZL:
+                zXvwkNZCRMo5:
                     host: ''
                     guest: ''
         provider:
@@ -29,7 +26,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            gRWaNE5vlkEW:
+            Pgdv3DYcTQLP:
                 id: vagrant-root
                 source: ~/src/sites
                 target: /var/www
@@ -56,88 +53,30 @@ server:
     _prevent_empty: ''
 apache:
     modules:
-        - dav
-        - dav_fs
-        - expires
-        - headers
-        - info
-        - mime_magic
         - php
-        - proxy
         - rewrite
-        - ssl
     vhosts:
-        fUkj1Q1DhA9v:
-            servername: wednesdayagency.com.host
-            serveraliases:
-                - www.wednesdayagency.com.host
-            docroot: /var/www/wednesdayagency.com/deploy/
+        1Kysi1LmTpJA:
+            servername: vagrant
+            docroot: /var/www
             port: '80'
             setenv:
                 - 'APP_ENV dev'
             override:
                 - All
-        p614eG4keyfP:
-            servername: saturday-group.com.host
-            serveraliases:
-                - www.saturday-group.com.host
-            docroot: /var/www/saturday-group.com/deploy/
-            port: '80'
-            setenv:
-                - 'APP_ENV dev'
-            override:
-                - All
-        CRpRB9IU9dH1:
-            servername: wednesday-sample.host
-            serveraliases:
-                - www.wednesday-sample.host
-            docroot: /var/www/wednesday-sample/build/public/
-            port: '80'
-            setenv:
-                - 'APP_ENV dev'
     user: www-data
     group: www-data
     default_vhost: true
     mpm_module: prefork
 php:
-    version: '55'
+    version: '54'
     composer: '1'
     modules:
         php:
-            - cgi
             - cli
-            - common
-            - curl
-            - gd
-            - geoip
-            - imagick
-            - imap
             - intl
             - mcrypt
-            - memcached
-            - sqlite
-            - tidy
-            - xmlrpc
-            - xsl
-        pear:
-            - OpenID
-            - Console_CommandLine
-            - Event_SignalEmitter
-            - File_Sitemap
-            - HTTP_OAuth
-            - VersionControl_Git
-            - Services_Amazon_S3
-            - Services_Amazon_SQS
-            - Services_Facebook
-            - Services_Google
-            - Services_oEmbed
-            - Services_OpenSearch
-            - Services_Twitter
-            - Services_W3C_CSSValidator
-            - Services_W3C_HTMLValidator
-            - Services_YouTube
-            - SOAP
-            - XML_RPC2
+        pear: {  }
         pecl:
             - pecl_http
     ini:
