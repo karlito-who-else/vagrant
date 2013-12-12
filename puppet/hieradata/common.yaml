@@ -7,7 +7,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                zXvwkNZCRMo5:
+                a41PB5FtcRkm:
                     host: ''
                     guest: ''
         provider:
@@ -26,7 +26,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            Pgdv3DYcTQLP:
+            MYplJrEfqPMf:
                 id: vagrant-root
                 source: ~/src/sites
                 target: /var/www
@@ -56,9 +56,17 @@ apache:
         - php
         - rewrite
     vhosts:
-        1Kysi1LmTpJA:
+        cCziSt4SuMo5:
             servername: vagrant
             docroot: /var/www
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+        utGyx3qDNTKd:
+            servername: wednesday-sample.host
+            docroot: /var/www/wednesday-sample/build/public
             port: '80'
             setenv:
                 - 'APP_ENV dev'
@@ -100,7 +108,7 @@ mysql:
     root_password: wednesday
     phpmyadmin: '1'
     databases:
-        MUMEa2KpKJxs:
+        v69lFIa6FTe9:
             grant:
                 - ALL
             name: saturday-group.com
@@ -108,7 +116,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        5iEvaynhpKNs:
+        AFree9KyeoD9:
             grant:
                 - ALL
             name: wednesdayagency.com
@@ -116,7 +124,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/wednesdayagency.com/sql/schema.sql
-        RTZJFBHkEhJb:
+        BFiX41B14J97:
             grant:
                 - ALL
             name: erdem.com
@@ -124,7 +132,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/erdem.com/sql/schema.sql
-        9kbSeIcWQasl:
+        pp0nlVDDxJeo:
             grant:
                 - ALL
             name: wednesday-sample
