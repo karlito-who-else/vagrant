@@ -7,7 +7,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                a41PB5FtcRkm:
+                jah5sIFpeWZN:
                     host: ''
                     guest: ''
         provider:
@@ -26,7 +26,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            MYplJrEfqPMf:
+            tqSsytCgRuMq:
                 id: vagrant-root
                 source: ~/src/sites
                 target: /var/www
@@ -56,7 +56,7 @@ apache:
         - php
         - rewrite
     vhosts:
-        cCziSt4SuMo5:
+        KYexE74Q4oNF:
             servername: vagrant
             docroot: /var/www
             port: '80'
@@ -64,14 +64,20 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-        utGyx3qDNTKd:
+            options:
+                - 'FollowSymlinks'
+        QoKyn9fSibkM:
             servername: wednesday-sample.host
+            serveraliases:
+                - www.wednesday-sample.host
             docroot: /var/www/wednesday-sample/build/public
             port: '80'
             setenv:
                 - 'APP_ENV dev'
             override:
                 - All
+            options:
+                - 'FollowSymlinks'
     user: www-data
     group: www-data
     default_vhost: true
@@ -108,7 +114,7 @@ mysql:
     root_password: wednesday
     phpmyadmin: '1'
     databases:
-        v69lFIa6FTe9:
+        kAw6RVXAcd5h:
             grant:
                 - ALL
             name: saturday-group.com
