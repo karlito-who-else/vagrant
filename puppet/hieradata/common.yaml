@@ -49,12 +49,14 @@ server:
         - vim
     dot_files:
         -
-            bash_aliases: null
+    bash_aliases: null
     _prevent_empty: ''
 apache:
     modules:
         - php
         - rewrite
+    #php_admin_value:
+    #    - 'open_basedir none'
     vhosts:
         KYexE74Q4oNF:
             servername: vagrant
@@ -76,8 +78,21 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            options:
-                - 'FollowSymlinks'
+            options: 'FollowSymlinks'
+        ZoKyn9fSibkR:
+            servername: wisp.wednesday-sample.host
+            docroot: /var/www/wisp.wednesday-sample/build/public
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options: 'FollowSymlinks'
+            #rewrite_cond:
+            #    - '%{REQUEST_FILENAME} !-f'
+            #    - '%{REQUEST_FILENAME} !-d'
+            #rewrite_rule: '^(.*)$ index.php/$1 [L]'
+            #php_admin_value: 'open_basedir none'
     user: www-data
     group: www-data
     default_vhost: true
