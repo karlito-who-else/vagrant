@@ -88,6 +88,15 @@ apache:
             override:
                 - All
             options: 'FollowSymlinks'
+        AoKyn9fSibkA:
+            servername: dbv.wednesday-sample.host
+            docroot: /var/www/wednesday-sample/dbv
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options: 'FollowSymlinks'
             #rewrite_cond:
             #    - '%{REQUEST_FILENAME} !-f'
             #    - '%{REQUEST_FILENAME} !-d'
@@ -161,4 +170,3 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/wednesday-sample/sql/schema.sql
-
