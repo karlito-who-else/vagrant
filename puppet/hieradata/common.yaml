@@ -72,7 +72,7 @@ apache:
             servername: erdem.com.host
             serveraliases:
                 - www.erdem.com.host
-            docroot: /var/www/erdem.com/build
+            docroot: /var/www/erdem.com/build/dist
             port: '80'
             setenv:
                 - 'APP_ENV dev'
