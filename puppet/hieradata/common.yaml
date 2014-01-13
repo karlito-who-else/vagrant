@@ -68,6 +68,17 @@ apache:
                 - All
             options:
                 - 'FollowSymlinks'
+        PoRyn9fTibkF:
+            servername: erdem.com.host
+            serveraliases:
+                - www.erdem.com.host
+            docroot: /var/www/erdem.com/build
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options: 'FollowSymlinks'
         QoKyn9fSibkM:
             servername: wednesday-sample.host
             serveraliases:
@@ -120,6 +131,7 @@ php:
     ini:
         display_errors: On
         error_reporting: '-1'
+        safe_mode: Off
         session.save_path: /var/lib/php/session
     timezone: Europe/London
 xdebug:
