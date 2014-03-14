@@ -69,10 +69,19 @@ apache:
             options:
                 - 'FollowSymlinks'
         PoRyn9fTibkF:
+            servername: old.erdem.com.host
+            docroot: /var/www/old.erdem.com/dist
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options: 'FollowSymlinks'
+        ErRyn9fTibgD:
             servername: erdem.com.host
             serveraliases:
                 - www.erdem.com.host
-            docroot: /var/www/erdem.com/build/dist
+            docroot: /var/www/erdem.com/dist
             port: '80'
             setenv:
                 - 'APP_ENV dev'
