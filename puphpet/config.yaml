@@ -7,7 +7,7 @@ vagrantfile-local:
         memory: '512'
         chosen_provider: virtualbox
         network:
-            private_network: 192.168.57.101
+            private_network: 192.168.56.101
             forwarded_port:
                 EicvqCxzh8R7:
                     host: '8023'
@@ -84,7 +84,7 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment: FollowSymlinks
+            custom_fragment:
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
@@ -99,7 +99,7 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment: FollowSymlinks
+            custom_fragment:
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
@@ -114,7 +114,7 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment: FollowSymlinks
+            custom_fragment:
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
@@ -127,20 +127,20 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment: FollowSymlinks
+            custom_fragment:
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
         SQQ4THm6w3Fb:
             servername: kentandcurwen.com.host
-            docroot: /var/www/kentandcurwen.com/build
+            docroot: /var/www/kentandcurwen.com/deploy/build
             port: '80'
             setenv:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment: FollowSymlinks
+            custom_fragment:
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
