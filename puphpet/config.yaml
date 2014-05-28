@@ -1,33 +1,36 @@
 ---
 vagrantfile-local:
     vm:
-        box: ubuntu-precise12042-x64-vbox43
-        box_url: 'http://box.puphpet.com/ubuntu-precise12042-x64-vbox43.box'
+        box: puphpet/ubuntu1404-x64
+        box_url: puphpet/ubuntu1404-x64
         hostname: null
+        memory: '512'
+        chosen_provider: virtualbox
         network:
-            private_network: 192.168.56.101
+            private_network: 192.168.57.101
             forwarded_port:
-                RoGTcpGIzpwM:
+                EicvqCxzh8R7:
                     host: '8023'
                     guest: '22'
         provider:
             virtualbox:
                 modifyvm:
                     natdnshostresolver1: on
-                    memory: '512'
                 setextradata:
                     VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
+            vmware:
+                numvcpus: 1
         provision:
             puppet:
                 manifests_path: puphpet/puppet
                 manifest_file: manifest.pp
+                module_path: puphpet/puppet/modules
                 options:
                     - '--verbose'
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            zTSU3KN4xkgC:
-                id: vagrant-root
+            jBi4Yz5LdGAz:
                 source: ./
                 target: /var/www
                 nfs: 'false'
@@ -73,7 +76,7 @@ apache:
         - php
         - rewrite
     vhosts:
-        XzXHdMPPrNQf:
+        ogCw0yffxSEF:
             servername: vagrant
             docroot: /var/www
             port: '80'
@@ -82,18 +85,26 @@ apache:
             override:
                 - All
             custom_fragment: FollowSymlinks
-        Nyw91MOtPbBT:
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        TtU0LBp7vL6i:
             servername: erdem.com.host
             serveraliases:
                 - www.erdem.com.host
-            docroot: /var/www/erdem.com/dist
+            docroot: /var/www/erdem.com/build
             port: '80'
             setenv:
                 - 'APP_ENV dev'
             override:
                 - All
             custom_fragment: FollowSymlinks
-        jQZrw4zp3YFT:
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        BO5zqF3xyepz:
             servername: wednesday-sample.host
             serveraliases:
                 - www.wednesday-sample.host
@@ -104,7 +115,11 @@ apache:
             override:
                 - All
             custom_fragment: FollowSymlinks
-        CAcVBMNghrtM:
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        UeO8Gc6N06cp:
             servername: dbv.wednesday-sample.host
             docroot: /var/www/wednesday-sample/dbv
             port: '80'
@@ -113,17 +128,40 @@ apache:
             override:
                 - All
             custom_fragment: FollowSymlinks
-        PsYkapzCd0RF:
-            servername: old.erdem.com.host
-            docroot: /var/www/old.erdem.com/dist
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        SQQ4THm6w3Fb:
+            servername: kentandcurwen.com.host
+            docroot: /var/www/kentandcurwen.com/build
             port: '80'
             setenv:
                 - 'APP_ENV dev'
             override:
                 - All
             custom_fragment: FollowSymlinks
-    mod_pagespeed: '1'
-    mod_spdy: '1'
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+    mod_pagespeed: 0
+    mod_spdy: 0
+nginx:
+    install: 0
+    vhosts:
+        hW2ixuLgoRta:
+            server_name: awesome.dev
+            server_aliases:
+                - www.awesome.dev
+            www_root: /var/www/awesome.dev
+            listen_port: '80'
+            index_files:
+                - index.html
+                - index.htm
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
 php:
     install: '1'
     version: '55'
@@ -153,7 +191,7 @@ xdebug:
 xhprof:
     install: '1'
 drush:
-    install: '1'
+    install: 0
     settings:
         drush.tag_branch: 6.x
 mysql:
@@ -162,7 +200,7 @@ mysql:
     phpmyadmin: '1'
     adminer: '1'
     databases:
-        s7FGScWcXA9X:
+        Auyov3gyVBqQ:
             grant:
                 - ALL
             name: wednesdayagency.com
@@ -170,7 +208,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        ywgTZs4M5LGj:
+        iK22EUR72koK:
             grant:
                 - ALL
             name: saturday-group.com
@@ -178,7 +216,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        lQfR6DQDsmAN:
+        32KDjtixYKsy:
             grant:
                 - ALL
             name: erdem.com
@@ -186,7 +224,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/erdem.com/sql/schema.sql
-        xVnyh5FUwyOD:
+        QzJy7BEvvmvD:
             grant:
                 - ALL
             name: wednesday-sample
@@ -194,6 +232,14 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/wednesday-sample/sql/schema.sql
+        OpWxYgRs2Hex:
+            grant:
+                - ALL
+            name: kentandcurwen.com
+            host: localhost
+            user: wednesday
+            password: wednesday
+            sql_file: /var/www/kentandcurwen.com/sql/schema.sql
 postgresql:
     install: 0
     settings:
@@ -215,13 +261,17 @@ mongodb:
     settings:
         auth: 1
         port: '27017'
-    databases: {  }
+    databases:
+        hkavkjdLpYui:
+            name: cookadlib
+            user: cookadlib
+            password: cookadlib
 redis:
     install: 0
     settings:
         conf_port: '6379'
 beanstalkd:
-    install: '1'
+    install: 0
     settings:
         listenaddress: 0.0.0.0
         listenport: '13000'
@@ -233,12 +283,7 @@ beanstalkd:
     beanstalk_console: '1'
     binlogdir: /var/lib/beanstalkd/binlog
 rabbitmq:
-    install: '1'
+    install: 0
     settings:
         port: '5672'
-elastic_search:
-    install: '1'
-    settings:
-        java_install: true
-        autoupgrade: true
 
