@@ -41,18 +41,6 @@ include git
 include git::subtree
 ```
 
-###I want to set my user.name and user.email
-
-```puppet
-git::config { 'user.name':
-  value => 'John Doe',
-}
-
-git::config { 'user.email':
-  value => 'john.doe@example.com',
-}
-```
-
 ##Reference
 
 ###Classes
@@ -60,10 +48,6 @@ git::config { 'user.email':
 * `git`: Installs the git client package.
 * `gitosis`: Installs the gitosis package. No configuration
 * `subtree`: Installs and configures git-subtree for git 1.7 and up.
-
-###Resources
-
-* `git::config`: Set git global configuration for the user running puppet.
 
 ###Facts
 

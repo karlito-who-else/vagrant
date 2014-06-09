@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
         config.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}", type: nfs
       else
         config.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}", type: nfs,
-          group: 'www-data', user: 'www-data', mount_options: ["dmode=775", "fmode=764"]
+          group: 'www-data', owner: 'www-data', mount_options: ["dmode=775", "fmode=764"]
       end
     end
   end
@@ -70,6 +70,22 @@ Vagrant.configure("2") do |config|
       end
 
       v.vmx["memsize"] = "#{data['vm']['memory']}"
+    end
+  end
+
+  if data['vm']['chosen_provider'] == "parallels"
+    ENV['VAGRANT_DEFAULT_PROVIDER'] = "parallels"
+
+    config.vm.provider "parallels" do |v|
+      data['vm']['provider']['parallels'].each do |key, value|
+        if key == "memsize"
+          next
+        end
+
+        v.customize ["set", :id, "--#{key}", "#{value}"]
+      end
+
+      v.memory = "#{data['vm']['memory']}"
     end
   end
 

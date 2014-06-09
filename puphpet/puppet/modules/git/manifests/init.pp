@@ -9,7 +9,9 @@
 #  class { 'git': }
 #
 class git {
-  package { 'git':
-    ensure => installed,
+  if ! defined(Package['git']) {
+    package { 'git':
+      ensure => present
+    }
   }
 }

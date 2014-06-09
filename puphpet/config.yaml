@@ -9,7 +9,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                EicvqCxzh8R7:
+                ywWeKAUEkV6D:
                     host: '8023'
                     guest: '22'
         provider:
@@ -20,6 +20,8 @@ vagrantfile-local:
                     VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
             vmware:
                 numvcpus: 1
+            parallels:
+                cpus: 1
         provision:
             puppet:
                 manifests_path: puphpet/puppet
@@ -30,7 +32,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            jBi4Yz5LdGAz:
+            AAPmCzjzCMK2:
                 source: ~/src/sites/
                 target: /var/www
                 nfs: 'false'
@@ -63,6 +65,9 @@ mailcatcher:
         http_port: '1080'
         mailcatcher_path: /usr/local/bin
         log_path: /var/log/mailcatcher/mailcatcher.log
+firewall:
+    install: '1'
+    rules: null
 apache:
     install: '1'
     settings:
@@ -76,7 +81,7 @@ apache:
         - php
         - rewrite
     vhosts:
-        ogCw0yffxSEF:
+        KZ6qzOwPJywR:
             servername: vagrant
             docroot: /var/www
             port: '80'
@@ -84,12 +89,12 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment:
+            custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        TtU0LBp7vL6i:
+        0xEBR39vTH53:
             servername: erdem.com.host
             serveraliases:
                 - www.erdem.com.host
@@ -99,12 +104,12 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment:
+            custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        BO5zqF3xyepz:
+        WR5UVkOBecRz:
             servername: wednesday-sample.host
             serveraliases:
                 - www.wednesday-sample.host
@@ -114,12 +119,12 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment:
+            custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        UeO8Gc6N06cp:
+        E6DdDmGatHd2:
             servername: dbv.wednesday-sample.host
             docroot: /var/www/wednesday-sample/dbv
             port: '80'
@@ -127,12 +132,12 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment:
+            custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        SQQ4THm6w3Fb:
+        Nh0flOIL0qrU:
             servername: kentandcurwen.com.host
             serveraliases:
                 - kentcurwen.dev
@@ -142,7 +147,28 @@ apache:
                 - 'APP_ENV dev'
             override:
                 - All
-            custom_fragment:
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        TE2hK43SHbhg:
+            servername: frame-denim.com.host
+            docroot: /var/www/frame-denim.com.host/deploy/build
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
@@ -152,7 +178,7 @@ apache:
 nginx:
     install: 0
     vhosts:
-        hW2ixuLgoRta:
+        5TsizqusRgb7:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -164,10 +190,13 @@ nginx:
                 - index.php
             envvars:
                 - 'APP_ENV dev'
+            ssl_cert: ''
+            ssl_key: ''
 php:
     install: '1'
     version: '55'
     composer: '1'
+    composer_home: ''
     modules:
         php:
             - cli
@@ -180,8 +209,8 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-        upload_max_filesize: '32M'
-        post_max_size: '32M'
+        upload_max_filesize: 32M
+        post_max_size: 32M
     timezone: Europe/London
 xdebug:
     install: '1'
@@ -201,10 +230,9 @@ drush:
 mysql:
     install: '1'
     root_password: '123'
-    phpmyadmin: '1'
     adminer: '1'
     databases:
-        Auyov3gyVBqQ:
+        U1ZWdQ6BwwJB:
             grant:
                 - ALL
             name: wednesdayagency.com
@@ -212,7 +240,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        iK22EUR72koK:
+        uFh2GAfVHKlj:
             grant:
                 - ALL
             name: saturday-group.com
@@ -220,7 +248,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/saturday-group.com/sql/schema.sql
-        32KDjtixYKsy:
+        HWNF6DRYlj5Y:
             grant:
                 - ALL
             name: erdem.com
@@ -228,7 +256,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/erdem.com/sql/schema.sql
-        QzJy7BEvvmvD:
+        4uHZxStAtoK0:
             grant:
                 - ALL
             name: wednesday-sample
@@ -236,7 +264,7 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/wednesday-sample/sql/schema.sql
-        OpWxYgRs2Hex:
+        C6y3YWrlNyw1:
             grant:
                 - ALL
             name: kentandcurwen.com
@@ -256,7 +284,6 @@ postgresql:
 mariadb:
     install: 0
     root_password: '123'
-    phpmyadmin: 0
     adminer: 0
     databases: {  }
     version: '10.0'
@@ -266,7 +293,7 @@ mongodb:
         auth: 1
         port: '27017'
     databases:
-        hkavkjdLpYui:
+        pFEtS6AQ6S1Y:
             name: cookadlib
             user: cookadlib
             password: cookadlib
