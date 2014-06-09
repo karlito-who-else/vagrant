@@ -31,7 +31,7 @@ vagrantfile-local:
                     - '--parser future'
         synced_folder:
             jBi4Yz5LdGAz:
-                source: ./
+                source: ~/src/sites/
                 target: /var/www
                 nfs: 'false'
         usable_port_range: 2200..2250
@@ -134,6 +134,8 @@ apache:
             ssl_certs_dir: ''
         SQQ4THm6w3Fb:
             servername: kentandcurwen.com.host
+            serveraliases:
+                - kentcurwen.dev
             docroot: /var/www/kentandcurwen.com/deploy/build
             port: '80'
             setenv:
@@ -178,6 +180,8 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
+        upload_max_filesize: '32M'
+        post_max_size: '32M'
     timezone: Europe/London
 xdebug:
     install: '1'
