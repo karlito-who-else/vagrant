@@ -158,7 +158,7 @@ apache:
             ssl_certs_dir: ''
         TE2hK43SHbhg:
             servername: frame-denim.com.host
-            docroot: /var/www/frame-denim.com.host/deploy/build
+            docroot: /var/www/frame-denim.com/deploy/build
             port: '80'
             setenv:
                 - 'APP_ENV dev'
