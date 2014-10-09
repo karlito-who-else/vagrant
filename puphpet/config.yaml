@@ -152,6 +152,26 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
+        SoSmRkfY2KJi:
+            servername: mulberry-cara.host
+            serveraliases:
+                - mulberry-cara.dev
+            docroot: /var/www/mulberry-cara/deploy/public
+            port: '80'
+            setenv:
+                - 'APP_ENV dev'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
         pbsuLwI2hu4c:
             servername: frame-denim.com.host
             docroot: /var/www/frame-denim.com/deploy/build
@@ -312,6 +332,14 @@ mysql:
             user: wednesday
             password: wednesday
             sql_file: /var/www/kentandcurwen.com/sql/schema.sql
+        js1lb4eGUhTA:
+            grant:
+                - ALL
+            name: mulberry-cara
+            host: localhost
+            user: wednesday
+            password: wednesday
+            sql_file: /var/www/mulberry-cara/sql/schema.sql
 postgresql:
     install: '0'
     settings:
@@ -375,4 +403,3 @@ elastic_search:
     settings:
         java_install: true
         autoupgrade: true
-
